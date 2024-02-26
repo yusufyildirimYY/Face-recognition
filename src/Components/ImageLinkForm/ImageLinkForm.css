@@ -1,0 +1,73 @@
+.w-700 {
+  width: 700px;
+}
+
+.shadow {
+  box-shadow: rgba(168, 253, 255, 0.25) 0px 54px 55px,
+    rgba(168, 253, 255, 0.12) 0px -12px 30px,
+    rgba(168, 253, 255, 0.12) 0px 4px 6px,
+    rgba(168, 253, 255, 0.17) 0px 12px 13px,
+    rgba(168, 253, 255, 0.09) 0px -3px 5px;
+}
+
+.bgimg {
+  background-image: linear-gradient(
+    200deg,
+    hsl(181deg 100% 80%) 0%,
+    hsl(181deg 100% 85%) 13%,
+    hsl(181deg 100% 87%) 19%,
+    hsl(180deg 100% 88%) 24%,
+    hsl(180deg 100% 90%) 29%,
+    hsl(180deg 100% 91%) 34%,
+    hsl(180deg 100% 93%) 40%,
+    hsl(180deg 100% 95%) 46%,
+    hsl(180deg 100% 97%) 52%,
+    hsl(180deg 100% 99%) 60%,
+    hsl(180deg 100% 100%) 71%,
+    hsl(0deg 0% 100%) 97%
+  );
+  background-repeat: no-repeat;
+}
+
+.bimg {
+  outline-width: 0;
+  border-width: 4px;
+  border-style: solid;
+  border-image: linear-gradient(
+      45deg,
+      hsl(181deg 100% 80%) 0%,
+      hsl(181deg 100% 85%) 13%,
+      hsl(181deg 100% 87%) 19%,
+      hsl(180deg 100% 88%) 24%,
+      hsl(180deg 100% 90%) 29%,
+      hsl(180deg 100% 91%) 34%,
+      hsl(180deg 100% 93%) 40%,
+      hsl(180deg 100% 95%) 46%,
+      hsl(180deg 100% 97%) 52%,
+      hsl(180deg 100% 99%) 60%,
+      hsl(180deg 100% 100%) 71%,
+      hsl(0deg 0% 100%) 97%
+    )
+    1;
+}
+
+.bbg {
+  background-image: linear-gradient(
+    15deg,
+    hsl(181deg 100% 80%) 0%,
+    hsl(181deg 100% 85%) 13%,
+    hsl(181deg 100% 87%) 19%,
+    hsl(180deg 100% 88%) 24%,
+    hsl(180deg 100% 90%) 29%,
+    hsl(180deg 100% 91%) 34%,
+    hsl(180deg 100% 93%) 40%,
+    hsl(180deg 100% 95%) 46%,
+    hsl(180deg 100% 97%) 52%,
+    hsl(180deg 100% 99%) 60%,
+    hsl(180deg 100% 100%) 71%,
+    hsl(0deg 0% 100%) 97%
+  );
+  background-repeat: no-repeat;
+  border-radius: 20px;
+  border: 0.5px solid cyan;
+}
