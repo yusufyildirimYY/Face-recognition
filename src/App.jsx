@@ -4,6 +4,7 @@ import Logo from "./Components/Logo/Logo";
 import ImageLinkForm from "./Components/ImageLinkForm/ImageLinkForm";
 import Clarifai from "clarifai";
 import "./App.css";
+import FaceRecognition from "./Components/FaceRecognition/FaceRecognition";
 
 const app = new Clarifai.App({
   apiKey: "b6dd9aa133da413ca1b281c11cea2841",
@@ -14,22 +15,40 @@ class App extends Component {
     super();
     this.state = {
       input: "",
+      imageURL: "",
+      box: [],
     };
   }
 
+  faceLocation = (data) => {
+    const clarifaiFace = data.region_info.bounding_box;
+    const image = document.getElementById("inputimage");
+    const width = Number(image.width);
+    const height = Number(image.height);
+    return {
+      top: clarifaiFace.top_row * height,
+      left: clarifaiFace.left_col * width,
+      bottom: height - clarifaiFace.bottom_row * height,
+      right: width - clarifaiFace.right_col * width,
+    };
+  };
+  displayFaceBox = (box) => {
+    this.setState({ box: box });
+  };
+
   onInputChange = (event) => {
-    console.log(event.target.value);
+    this.setState({ input: event.target.value });
   };
 
   onButtonSubmit = () => {
-    console.log("click");
+    this.setState({ imageURL: this.state.input });
 
     const PAT = "b6dd9aa133da413ca1b281c11cea2841";
     const USER_ID = "douglasyy1059";
     const APP_ID = "Face-Recognition";
     const MODEL_ID = "face-detection";
     const MODEL_VERSION_ID = "9491c36f920544d686c7bbcdd4b0557f";
-    const IMAGE_URL = "https://samples.clarifai.com/metro-north.jpg";
+    const IMAGE_URL = this.state.input;
 
     const raw = JSON.stringify({
       user_app_id: {
@@ -61,7 +80,14 @@ class App extends Component {
       requestOptions
     )
       .then((response) => response.json())
-      .then((response) => console.log(response));
+      .then((result) => {
+        const faces = result.outputs[0].data.regions.map((region) => {
+          console.log(region);
+          return this.faceLocation(region);
+        });
+        this.displayFaceBox(faces);
+      })
+      .catch((error) => console.log("error", error));
   };
 
   render() {
@@ -73,7 +99,7 @@ class App extends Component {
           onInputChange={this.onInputChange}
           onButtonSubmit={this.onButtonSubmit}
         />
-        {/* <FaceRecognition /> */}
+        <FaceRecognition box={this.state.box} imageURL={this.state.imageURL} />
       </div>
     );
   }
