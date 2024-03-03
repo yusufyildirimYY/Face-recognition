@@ -4,11 +4,11 @@ import "./FaceRecognition.css";
 const FaceRecognition = ({ imageURL, box }) => {
   return (
     <div className="flex justify-center items-center z-50 ">
-      <div className="relative mt-0">
+      <div className="relative mt-0 mb-4">
         <div>
           <img
             id="inputimage"
-            className="w-700 mb-4 rounded-lg text-opacity-0 z-10"
+            className="w-700  rounded-lg text-opacity-0 z-10"
             src={imageURL}
             alt=""
           />
