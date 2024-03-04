@@ -55,6 +55,15 @@ const Register = ({ onRouteChange }) => {
             Register
           </button>
         </div>
+        <div className="flex">
+          <button
+            className=" mx-auto  text-gray-600 hover:opacity-60 duration-300 font-bold py-3 px-2 mt-2 mb-11 "
+            type="button"
+            onClick={() => onRouteChange("signin")}
+          >
+            Sign in
+          </button>
+        </div>
       </form>
     </div>
   );
