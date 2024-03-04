@@ -3,7 +3,7 @@ import "./ImageLinkForm.css";
 
 const ImageLinkForm = ({ onInputChange, onButtonSubmit }) => {
   return (
-    <div className="text-center center z-0 ">
+    <div className="text-center center z-0 h-full ">
       <div className="grid justify-center items-center shadow shadow-cyan-100 bgimg rounded-xl mt-32">
         <p className="text-2xl text-black pt-4">
           This Site will detect faces in your pictures. Give it a try

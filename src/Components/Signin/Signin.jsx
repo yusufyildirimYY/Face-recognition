@@ -1,9 +1,10 @@
 import React from "react";
+import "./Signin.css";
 
-const Signin = () => {
+const Signin = ({ onRouteChange }) => {
   return (
-    <div class="w-full h-full  flex justify-center items-center">
-      <form className="bg-white shadow-md rounded px-24  py-20 pb-8 ">
+    <div class="w-full h-full  flex justify-center items-center ">
+      <form className="bg-white shadow-md rounded px-24  py-20 pb-8  bgcolor">
         <div className="mb-4">
           <label
             className="block text-gray-700 text-l font-bold mb-2"
@@ -34,15 +35,16 @@ const Signin = () => {
         </div>
         <div className="flex ">
           <button
-            className=" mx-auto  bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-14 rounded focus:outline-none focus:shadow-outline"
+            className=" mx-auto  bg-cyan-500 hover:bg-blue-600 duration-300 text-white font-bold py-3 px-14 rounded focus:outline-none focus:shadow-outline text-2xl "
             type="button"
+            onClick={() => onRouteChange("home")}
           >
             Sign In
           </button>
         </div>
         <div className="flex">
           <button
-            className=" mx-auto  text-gray-600 font-bold py-3 px-14 mt-2 mb-11 "
+            className=" mx-auto  text-gray-600 hover:opacity-60 duration-300 font-bold py-3 px-2 mt-2 mb-11 "
             type="button"
           >
             Register

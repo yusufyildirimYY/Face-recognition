@@ -18,8 +18,13 @@ class App extends Component {
       input: "",
       imageURL: "",
       box: [],
+      route: "signin",
     };
   }
+
+  onRouteChange = (route) => {
+    this.setState({ route: route });
+  };
 
   faceLocation = (data) => {
     const clarifaiFace = data.region_info.bounding_box;
@@ -94,14 +99,22 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Navigation />
-        <Signin />
-        <Logo />
-        <ImageLinkForm
-          onInputChange={this.onInputChange}
-          onButtonSubmit={this.onButtonSubmit}
-        />
-        <FaceRecognition box={this.state.box} imageURL={this.state.imageURL} />
+        {this.state.route === "signin" ? (
+          <Signin onRouteChange={this.onRouteChange} />
+        ) : (
+          <div className="h-full">
+            <Navigation onRouteChange={this.onRouteChange} />
+            <Logo />
+            <ImageLinkForm
+              onInputChange={this.onInputChange}
+              onButtonSubmit={this.onButtonSubmit}
+            />
+            <FaceRecognition
+              box={this.state.box}
+              imageURL={this.state.imageURL}
+            />{" "}
+          </div>
+        )}
       </div>
     );
   }
