@@ -1,7 +1,6 @@
 import React from "react";
-import "./Signin.css";
 
-const Signin = ({ onRouteChange }) => {
+const Register = ({ onRouteChange }) => {
   return (
     <div class="w-full h-full  flex justify-center items-center ">
       <form className="bg-white shadow-md rounded px-24  py-20 pb-8  bgcolor">
@@ -17,6 +16,20 @@ const Signin = ({ onRouteChange }) => {
             id="username"
             type="text"
             placeholder="Username"
+          />
+        </div>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-l font-bold mb-2"
+            for="Email"
+          >
+            Email
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-4 px-6 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="username"
+            type="text"
+            placeholder="Email"
           />
         </div>
         <div className="mb-6">
@@ -35,18 +48,9 @@ const Signin = ({ onRouteChange }) => {
         </div>
         <div className="flex ">
           <button
+            onClick={() => onRouteChange("signin")}
             className=" mx-auto  bg-cyan-500 hover:bg-blue-600 duration-300 text-white font-bold py-3 px-14 rounded focus:outline-none focus:shadow-outline text-2xl "
             type="button"
-            onClick={() => onRouteChange("home")}
-          >
-            Sign In
-          </button>
-        </div>
-        <div className="flex">
-          <button
-            className=" mx-auto  text-gray-600 hover:opacity-60 duration-300 font-bold py-3 px-2 mt-2 mb-11 "
-            type="button"
-            onClick={() => onRouteChange("register")}
           >
             Register
           </button>
@@ -56,4 +60,4 @@ const Signin = ({ onRouteChange }) => {
   );
 };
 
-export default Signin;
+export default Register;

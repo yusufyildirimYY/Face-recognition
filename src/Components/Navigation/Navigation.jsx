@@ -2,7 +2,7 @@ import React from "react";
 
 const Navigation = ({ onRouteChange }) => {
   return (
-    <nav className=" flex justify-end  absolute   w-full ">
+    <nav className=" flex justify-end  w-full ">
       <div className="w-48 relative ">
         <p
           onClick={() => {

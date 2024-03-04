@@ -6,6 +6,7 @@ import Clarifai from "clarifai";
 import "./App.css";
 import FaceRecognition from "./Components/FaceRecognition/FaceRecognition";
 import Signin from "./Components/Signin/Signin";
+import Register from "./Components/Register/Register";
 
 const app = new Clarifai.App({
   apiKey: "b6dd9aa133da413ca1b281c11cea2841",
@@ -99,9 +100,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {this.state.route === "signin" ? (
-          <Signin onRouteChange={this.onRouteChange} />
-        ) : (
+        {this.state.route === "home" ? (
           <div className="h-full">
             <Navigation onRouteChange={this.onRouteChange} />
             <Logo />
@@ -112,8 +111,12 @@ class App extends Component {
             <FaceRecognition
               box={this.state.box}
               imageURL={this.state.imageURL}
-            />{" "}
+            />
           </div>
+        ) : this.state.route === "signin" ? (
+          <Signin onRouteChange={this.onRouteChange} />
+        ) : (
+          <Register onRouteChange={this.onRouteChange} />
         )}
       </div>
     );
