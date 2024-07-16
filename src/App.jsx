@@ -1,12 +1,9 @@
 import React, { Component } from "react";
-import Navigation from "./Components/Navigation/Navigation";
 import Logo from "./Components/Logo/Logo";
 import ImageLinkForm from "./Components/ImageLinkForm/ImageLinkForm";
 import Clarifai from "clarifai";
 import "./App.css";
 import FaceRecognition from "./Components/FaceRecognition/FaceRecognition";
-import Signin from "./Components/Signin/Signin";
-import Register from "./Components/Register/Register";
 
 const app = new Clarifai.App({
   apiKey: "b6dd9aa133da413ca1b281c11cea2841",
@@ -19,13 +16,8 @@ class App extends Component {
       input: "",
       imageURL: "",
       box: [],
-      route: "home",
     };
   }
-
-  onRouteChange = (route) => {
-    this.setState({ route: route });
-  };
 
   faceLocation = (data) => {
     const clarifaiFace = data.region_info.bounding_box;
@@ -50,11 +42,10 @@ class App extends Component {
   onButtonSubmit = () => {
     this.setState({ imageURL: this.state.input });
 
-    const PAT = "b6dd9aa133da413ca1b281c11cea2841";
-    const USER_ID = "douglasyy1059";
+    const PAT = import.meta.env.VITE_PAT; //Your Pat Here
+    const USER_ID = import.meta.env.VITE_USER_ID; //Your User Id Here
     const APP_ID = "Face-Recognition";
     const MODEL_ID = "face-detection";
-    const MODEL_VERSION_ID = "9491c36f920544d686c7bbcdd4b0557f";
     const IMAGE_URL = this.state.input;
 
     const raw = JSON.stringify({
@@ -100,24 +91,17 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {this.state.route === "home" ? (
-          <div className="h-full">
-            <Navigation onRouteChange={this.onRouteChange} />
-            <Logo />
-            <ImageLinkForm
-              onInputChange={this.onInputChange}
-              onButtonSubmit={this.onButtonSubmit}
-            />
-            <FaceRecognition
-              box={this.state.box}
-              imageURL={this.state.imageURL}
-            />
-          </div>
-        ) : this.state.route === "signin" ? (
-          <Signin onRouteChange={this.onRouteChange} />
-        ) : (
-          <Register onRouteChange={this.onRouteChange} />
-        )}
+        <div className="h-full">
+          <Logo />
+          <ImageLinkForm
+            onInputChange={this.onInputChange}
+            onButtonSubmit={this.onButtonSubmit}
+          />
+          <FaceRecognition
+            box={this.state.box}
+            imageURL={this.state.imageURL}
+          />
+        </div>
       </div>
     );
   }
